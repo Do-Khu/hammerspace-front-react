@@ -1,2 +1,2 @@
 lets-rock:
-	cd hammerspace-app ; $(MAKE) install
+	cd hammerspace-app ; $(MAKE) deploy
