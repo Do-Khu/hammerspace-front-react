@@ -11,6 +11,36 @@ export const Container = styled.div`
     background-color: #383838;
 `;
 
+export const LoginError = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+
+    color: #000;
+
+    background-image: url('./assets/login_error.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height:500px;
+    width:350px;
+    min-width:200px;
+
+    position: absolute;
+    padding-left:40px;
+    padding-right:30px;
+    padding-top: 250px;
+
+    p {
+        font-size:14px;
+        font-weight: bold;
+    }
+
+    ########################### ******************************* arrumar o caralho da troca de estado do login error.
+
+`;
+
 export const Form = styled.form`
     display: flex;
     padding: 3rem;
@@ -18,14 +48,14 @@ export const Form = styled.form`
     align-items: center;
     justify-content: center;
     background-color: #201d1d;
-    border-radius: 5px;
+    border-radius: 45px;
     max-width: 450px;
     gap: 30px 0px;
 
     h1 {
         color: white;
-        font-size: 20px;
-        font-weight: light;
+        font-size: 24px;
+        font-weight: bold;
     }
 
     p {
