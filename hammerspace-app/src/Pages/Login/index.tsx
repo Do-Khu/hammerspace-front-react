@@ -4,7 +4,7 @@ import CustomInput from "../../Components/Input";
 import CustomButton from "../../Components/Button";
 import {validateInput} from "../../utils/validateLogin";
 import UserServices from "../../Services/UserServices";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, NavLink} from "react-router-dom";
 
 const userService = new UserServices();
 
@@ -40,17 +40,10 @@ const Login = () => {
             }
             setLoading(false); // realise the button.
         }catch(err){
-            //TODO: mostrar msg de erro de login
-            alert("Deu erro nessa budega"+err);
+            setLoginerror(true);
+            errorLoginMessage();
         }
-        
-       
-        //Error screen 
-        /*
-        
-        */
     }
-
     // JSX 
     return (
         <Container>
@@ -77,7 +70,7 @@ const Login = () => {
                     disabled={loading || !validateInput(formData["email"], formData["pass"])}
                 />
                 <div>
-                    <a>Sing Up now</a>
+                    <NavLink to="Register">Sing Up now</NavLink>
                 </div>
             </Form>
             
