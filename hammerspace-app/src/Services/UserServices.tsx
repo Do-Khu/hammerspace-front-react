@@ -7,17 +7,26 @@ export default class UserService {
             baseURL: process.env.REACT_APP_API_LOGIN
         });
     }
+    
 
     async login (qData:any) {
-    const {data} = await this.axios.post('/auth', qData);
+    const {data} = await this.axios.post("/auth", qData, {Headers:{"Content-Type":"application/json","Access-Control-Allow-Headers":"*", "Access-Control-Allow-Origin" : "*"}});
     if (data) {
-        localStorage.setItem("name", data.user.name);
-        localStorage.setItem("email", data.user.email);
-        localStorage.setItem("token", data.user.token);
+        localStorage.setItem("name", data.name);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("token", data.token);
 
         return true;
     }
-    return false;
+    return ;
    };
 
+    userAuthenticated () {
+        return localStorage.getItem("token") != null ? true : false;
+    }
+    async logout () {
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        localStorage.removeItem("token");
+    }
 }

@@ -37,8 +37,6 @@ export const LoginError = styled.div`
         font-weight: bold;
     }
 
-    ########################### ******************************* arrumar o caralho da troca de estado do login error.
-
 `;
 
 export const Form = styled.form`
