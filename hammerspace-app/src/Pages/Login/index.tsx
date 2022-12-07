@@ -83,10 +83,11 @@ const Login = () => {
             
             <LoginError id="loginError">
                 <p>Counter tartget non-correct email or password, with a login is countered</p>
+                <br/>
                 <p>on this way the user may try again</p>
                 <CustomButton
                     Type="button"
-                    Placeholder="Try Again"
+                    Placeholder="Resolve Spell"
                     onClick={()=>{
                         setLoginerror(false);
                         errorLoginMessage();

@@ -11,10 +11,11 @@ export const Container = styled.div`
     background-color: #383838;
 `;
 
+
 export const LoginError = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     flex-direction:column;
 
     color: #000;
@@ -29,12 +30,32 @@ export const LoginError = styled.div`
 
     position: absolute;
     padding-left:40px;
-    padding-right:30px;
     padding-top: 250px;
 
     p {
         font-size:14px;
         font-weight: bold;
+    }
+
+    button {
+        margin-top:20px;
+        margin-left:-40px;
+        align-self: center;
+
+        width:100px;
+        height: 30px;
+
+        font-size: 14px;
+        font-weight: bold;
+
+        color: #a0a0a0a;
+        background-color: #1adb54;
+
+    }
+
+    button:hover {
+        background-color: #78f79e;
+        color: #000;
     }
 
 `;
