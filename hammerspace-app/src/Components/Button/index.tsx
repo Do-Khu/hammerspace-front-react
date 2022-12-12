@@ -3,17 +3,26 @@ import { Button } from './styles';
 
 interface IFCustomButton {
     Type: "submit" | "button" | "reset" | undefined,
-    Placeholder: string,
-    onClick: any,
-    disabled: boolean
+    Placeholder: string | null,
+    onClick: any | null,
+    disabled: boolean,
+    id: string | undefined
 }
 
 const CustomButton = (props: IFCustomButton) => {
-    return (
-        <Button type={props.Type} onClick={props.onClick} disabled={props.disabled}>
+    if (props.id === undefined) {
+        return (
+        <Button id={props.id} type={props.Type} onClick={props.onClick} disabled={props.disabled}>
             {props.Placeholder}
         </Button>
-    );
+        );
+    }else{
+        return (
+        <Button id={props.id} type={props.Type} onClick={props.onClick} disabled={props.disabled}>
+            {props.Placeholder}
+        </Button>
+        );
+    }
 }
 
 export default CustomButton;

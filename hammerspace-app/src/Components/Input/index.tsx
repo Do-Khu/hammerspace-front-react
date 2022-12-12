@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from './styles';
 
 interface IFCustomInput {
-    Type: "email" | "password" | undefined,
+    Type: "text" | "password" | undefined,
     Name: string,
     Placeholder: string,
     onChange: any
