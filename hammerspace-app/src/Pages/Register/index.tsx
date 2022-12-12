@@ -33,7 +33,7 @@ const Register  = () => {
             }
             setLoading(false); // realise the button.
         }catch(err){
-            // TODO: validate pass and email
+            // TODO: validate pass and name
         }
     }
     // JSX 
@@ -42,16 +42,16 @@ const Register  = () => {
             <Form>
                 <h1>Let's make fabulous decks 🦄</h1>
                 <CustomInput
-                    Name="email"
-                    Placeholder="User email"
-                    Type="email"
+                    Name="name"
+                    Placeholder="User name"
+                    Type="text"
                     onChange={handleChange}
                 />
 
                 <CustomInput
-                    Name="email_chk"
-                    Placeholder="Email check"
-                    Type="email"
+                    Name="name_chk"
+                    Placeholder="Name check"
+                    Type="text"
                     onChange={handleChange}
                 />
                 <CustomInput
@@ -67,6 +67,7 @@ const Register  = () => {
                     onChange={handleChange}
                 />
                 <CustomButton
+                    id=""
                     Type="submit"
                     Placeholder="Register"
                     onClick={handleSubmit}

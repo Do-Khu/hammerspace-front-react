@@ -12,13 +12,13 @@ const Login = () => {
     // State declarations
     const [loading, setLoading] = useState<boolean>(false);
     const [formData, setFormdata] = useState<any>([]);
-    const [loginError, setLoginerror] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const errorLoginMessage = () =>{
+    const errorLoginMessage = (loginError: boolean) =>{
         const aux = document.getElementById("loginError");
-        if (aux != null)
+        if (aux != null){
             aux.style.visibility = loginError ? "visible" : "hidden";
+        }
     }
 
     // Handler Functions
@@ -40,8 +40,8 @@ const Login = () => {
             }
             setLoading(false); // realise the button.
         }catch(err){
-            setLoginerror(true);
-            errorLoginMessage();
+            errorLoginMessage(true);
+            setLoading(false); // realise the button.
         }
     }
     // JSX 
@@ -50,24 +50,25 @@ const Login = () => {
             <Form>
                 <h1>Let's make fabulous decks 🦄</h1>
                 <CustomInput
-                    Name="email"
-                    Placeholder="User email"
-                    Type="email"
+                    Name="username"
+                    Placeholder="User name"
+                    Type="text"
                     onChange={handleChange}
                 />
 
                 <CustomInput
-                    Name="pass"
+                    Name="password"
                     Placeholder="User password"
                     Type="password"
                     onChange={handleChange}
                 />
 
                 <CustomButton
+                    id=""
                     Type="submit"
                     Placeholder="Login"
                     onClick={handleSubmit}
-                    disabled={loading || !validateInput(formData["email"], formData["pass"])}
+                    disabled={loading || !validateInput(formData["password"])}
                 />
                 <div>
                     <NavLink to="Register">Sing Up now</NavLink>
@@ -75,15 +76,15 @@ const Login = () => {
             </Form>
             
             <LoginError id="loginError">
-                <p>Counter tartget non-correct email or password, with a login is countered</p>
+                <p>Counter tartget non-correct name or password, with a login is countered</p>
                 <br/>
                 <p>on this way the user may try again</p>
                 <CustomButton
+                    id=""
                     Type="button"
                     Placeholder="Resolve Spell"
                     onClick={()=>{
-                        setLoginerror(false);
-                        errorLoginMessage();
+                        errorLoginMessage(false);
                     }} 
                     disabled={false}
                 />

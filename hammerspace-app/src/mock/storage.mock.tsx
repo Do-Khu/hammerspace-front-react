@@ -1,0 +1,52 @@
+const StorageMock = [
+    {
+        "cardid":2313,
+        "imglink":"https://cards.scryfall.io/large/front/9/1/91d9bb89-d8f8-4dff-8b94-3f7b8aa8f299.jpg?1593274717"
+    },
+    {
+        "cardid":15000,
+        "imglink":"https://cards.scryfall.io/png/front/0/b/0b7cedc7-b07d-4d28-afef-4eecd9f343cf.png?1593813383"
+    },
+    {
+        "cardid":1654,
+        "imglink":"https://cards.scryfall.io/png/front/8/8/881fecf4-8c14-4614-84bd-c1a3dcdbb5ff.png?1562762458"
+    },
+    {
+        "cardid":252,
+        "imglink":"https://cards.scryfall.io/png/front/1/a/1aefaec4-741b-4a90-bf2c-e18215aac57c.png?1562875730"
+    },
+    {
+        "cardid":469,
+        "imglink":"https://cards.scryfall.io/png/front/4/7/47b711b5-aeec-47c4-a718-6bf43e561944.png?1543675171"
+    },
+    {
+        "cardid":20220,
+        "imglink":"https://cards.scryfall.io/png/front/3/4/34406508-da49-4b63-b123-55f0924a0675.png?1562428882"
+    },
+    {
+        "cardid":5468,
+        "imglink":"https://cards.scryfall.io/png/front/0/4/04d83a07-6054-45f1-bdf9-07f2006238d2.png?1562895903"
+    },
+    {
+        "cardid":861,
+        "imglink":"https://cards.scryfall.io/png/front/e/f/eff007af-0329-4872-8621-41e90d9f06e6.png?1562645006"
+    },
+    {
+        "cardid":8131,
+        "imglink":"https://cards.scryfall.io/png/front/8/7/87ad2799-854c-498e-b83b-c3bc063b97ee.png?1573514047"
+    },
+    {
+        "cardid": 8745,
+        "imglink":"https://cards.scryfall.io/png/front/7/c/7c77c7c1-39a5-4049-8e2c-3561b046152e.png?1562924336"
+    },
+    {
+        "cardid":12233,
+        "imglink":"https://cards.scryfall.io/png/front/b/3/b387a940-daa3-4ba5-b897-3fdc2855d02a.png?1654630842"
+    },
+    {
+        "cardid":17233,
+        "imglink":"https://cards.scryfall.io/png/front/a/8/a86562c6-91bd-4866-a2a9-0062ffdf07ce.png?1562834327"
+    }
+]
+
+export default StorageMock;
