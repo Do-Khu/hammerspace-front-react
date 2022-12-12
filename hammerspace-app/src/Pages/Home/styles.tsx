@@ -9,7 +9,7 @@ export const MenuBar = styled.div`
 
     display: flex;
     flex-direction:column;
-    justify-content: space-between;
+    justify-content: initial;
     align-items: center;
     padding-top:30px;
     padding-left:15px;
@@ -90,9 +90,11 @@ export const MenuBar = styled.div`
     #btn_userlogout {
 
         display:flex;
-        justify-self:center;
+        justify-self:end;
         aling-items:center;
 
+        margin-top:330px;
+        margin-left:20px;
         width: 3vw;
         height: 3vh;
 

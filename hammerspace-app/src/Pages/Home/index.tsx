@@ -8,8 +8,14 @@ import { MenuBar, MainContainer, Container, TitleDiv } from "./styles";
 
 import StorageServices from "../../Services/StorageServices";
 import CardServices from "../../Services/CardServices";
+import { useNavigate } from "react-router-dom";
+import UserService from "../../Services/UserServices";
 
 const HomePage = () => {
+    const navigate = useNavigate();
+    const userService = new UserService();
+    if(!userService.userAuthenticated()){navigate('/');}
+    
     const storageHandler = new StorageServices();
     const cardsHandler = new CardServices();
 
@@ -63,6 +69,9 @@ const HomePage = () => {
     }
     const userLogout = () => {
         console.log("user logout");
+        localStorage.removeItem("username");
+        localStorage.removeItem("token");
+        navigate('/');
     }
     return (
         <Container>
@@ -82,21 +91,6 @@ const HomePage = () => {
                 disabled={false}
                 onClick={inventoryClick} />
 
-                {/* Deck view button */}
-                <CustomButton
-                id="btn_deck_view"
-                Type="button" 
-                Placeholder="" 
-                disabled={false}
-                onClick={deckClick} />
-                {/* Deck add / update  button */}
-                <CustomButton
-                id="btn_deck_add_update"
-                Type="button" 
-                Placeholder="" 
-                disabled={false}
-                onClick={deckClick} />
-                
                 {/* Logout button */}
                 <CustomButton
                 id="btn_userlogout"
