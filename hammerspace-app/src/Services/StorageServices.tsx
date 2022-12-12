@@ -21,18 +21,20 @@ export default class StorageServices{
 
     async queryCard (cardName: string) {
         const {data} = await this.axios.get("/api/storage/"+cardName);
-        if (data) {
+        console.log("request feita",data);
+        if (data[0].id !== undefined) {
             return true;
         } else {
             return false;
         }
     }
 
-    async addCard (cardid: {"cardId": number}) {
+    async addCard (cardId: any) {
         /*
             cardId: int
         */
-        const {data} = await this.axios.post("/api/storage");
+       console.log(cardId);
+        const {data} = await this.axios.post("/api/storage", cardId);
         if (data) {
             return true;
         } else {
@@ -40,8 +42,9 @@ export default class StorageServices{
         }
     }
 
-    async delete (cardName: string) {
-        const {data} = await this.axios.get("/api/storage/"+cardName);
+    async delCard (cardId: number) {
+        console.log(cardId);
+        const {data} = await this.axios.get("/api/storage/"+cardId+"/remove");
         if (data) {
             return true;
         }else{

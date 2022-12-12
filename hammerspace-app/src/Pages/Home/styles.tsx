@@ -116,7 +116,31 @@ export const MainContainer = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+
+
+    #StorageView {
+        display: flex;
+        flex-direction:column ;
+        justify-content: center;
+        align-items: center;
+
+        width:100%;
+        height:100%;
+    }
+
+    #StorageAddDel {
+        display: flex;
+        flex-direction:column ;
+        justify-content: center;
+        align-items: center;
+        
+
+        color:#000;
+
+        width:100%;
+        height:100%;
+    }
 `;
 
 export const Container = styled.div`
@@ -124,8 +148,18 @@ export const Container = styled.div`
     width:100vw;
     height:100vh;
 
+    overflow-x:hidden;
     display: flex;
     flex-direction:row;
+`;
+
+export const TitleDiv = styled.div`
+    color: #000;
+    width: 100%;
+    height: 200px;
+
+    display:flex;
     justify-content: center;
     align-items: center;
+
 `;
