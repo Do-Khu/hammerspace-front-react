@@ -27,10 +27,10 @@ const Register  = () => {
         event.preventDefault();
         try {
             setLoading(true); //lock the button, to prevent multiples logins requests.
-            const response = await userService.login(formData);
-            if (response === true){
-                navigate("/");
-            }
+            const response = await userService.register(formData);
+            alert("Wellcome "+formData.username+", now login and getr started");
+            navigate("/");
+            
             setLoading(false); // realise the button.
         }catch(err){
             // TODO: validate pass and name
@@ -42,27 +42,21 @@ const Register  = () => {
             <Form>
                 <h1>Let's make fabulous decks 🦄</h1>
                 <CustomInput
-                    Name="name"
-                    Placeholder="User name"
+                    Name="username"
+                    Placeholder="User nickname"
                     Type="text"
                     onChange={handleChange}
                 />
 
                 <CustomInput
-                    Name="name_chk"
-                    Placeholder="Name check"
+                    Name="fullName"
+                    Placeholder="Your full name"
                     Type="text"
                     onChange={handleChange}
                 />
                 <CustomInput
-                    Name="pass"
+                    Name="password"
                     Placeholder="User password"
-                    Type="password"
-                    onChange={handleChange}
-                />
-                <CustomInput
-                    Name="pass_chk"
-                    Placeholder="Password check"
                     Type="password"
                     onChange={handleChange}
                 />
@@ -71,7 +65,7 @@ const Register  = () => {
                     Type="submit"
                     Placeholder="Register"
                     onClick={handleSubmit}
-                    disabled={loading /*|| !VALIDATE PASS AND USER */}
+                    disabled={false}
                 />
             </Form>
         </Container>       

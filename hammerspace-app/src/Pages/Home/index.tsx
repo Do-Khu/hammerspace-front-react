@@ -1,30 +1,64 @@
 import React, { useState } from "react";
 import CustomButton  from "../../Components/Button";
 import  CardGrid from "../../Components/CardView";
-import { MenuBar, MainContainer, Container } from "./styles";
+import  CardEdit from "../../Components/CardEdit";
+import SearchBar from "../../Components/SearchBar";
+
+import { MenuBar, MainContainer, Container, TitleDiv } from "./styles";
+
 import StorageServices from "../../Services/StorageServices";
+import CardServices from "../../Services/CardServices";
+import { useNavigate } from "react-router-dom";
+import UserService from "../../Services/UserServices";
 
 const HomePage = () => {
+    const navigate = useNavigate();
+    const userService = new UserService();
+    if(!userService.userAuthenticated()){navigate('/');}
+    
     const storageHandler = new StorageServices();
-    const cardsHandler = new StorageServices();
+    const cardsHandler = new CardServices();
 
     const [storageData, setStorageData] = useState<any>([]);
-    const [storageDataDisplay, setStorageDataDisplay] = useState<string>("none");
-    const [storageAddDel, setStorageAddDel] = useState<any>([]); // esse vem do cards
-    const [storageAddDelDisplay, setStorageAddDelDisplay] = useState<string>("none"); //esse manda pro stok
+    const [storageDataDisplay, setStorageDataDisplay] = useState<"flex" | "none">("none");
+    const [storageAddDelDisplay, setStorageAddDelDisplay] = useState<"flex" | "none">("none");
+    const [formData, setFormdata] = useState<any>([]);
+    const [cardData, setCardData] = useState<any>([]);
 
+    const handleChange = (event: {
+        target: {
+            name: string,
+            value:string
+        }
+    }) => {
+        setFormdata({...formData, [event.target.name]: event.target.value});
+    }
+    const handleSubmit = () => {
+        // Make search
+        cardsHandler.queryCard(formData.search).then((val: any) => {
+            setCardData([...val]);
+        }).catch((err: any)=>{
+            alert("Something gone wrong..."+err);
+        });
+    }
+
+    
     const inventoryClick = (event: any) => {
-        if (event.name === "btn_inv_view") {
+        
+        if (event.target.id === "btn_inv_view") {
+            setStorageDataDisplay("flex");
+            setStorageAddDelDisplay("none");
+            
             storageHandler.queryStorage().then((value: any)=>{
                 setStorageData([...value]);
-                setStorageDataDisplay("block");
             }).catch((err)=>{
                 alert("Something gone worng..."+err);
             })
         }else{
-            storageHandler.queryStorage().then((value: any)=>{ // parse to -> cards handler
+            setStorageAddDelDisplay("flex");
+            setStorageDataDisplay("none");
+            storageHandler.queryStorage().then((value: any)=>{
                 setStorageData([...value]);
-                setStorageDataDisplay("block");
             }).catch((err)=>{
                 alert("Something gone worng..."+err);
             })
@@ -35,6 +69,9 @@ const HomePage = () => {
     }
     const userLogout = () => {
         console.log("user logout");
+        localStorage.removeItem("username");
+        localStorage.removeItem("token");
+        navigate('/');
     }
     return (
         <Container>
@@ -54,21 +91,6 @@ const HomePage = () => {
                 disabled={false}
                 onClick={inventoryClick} />
 
-                {/* Deck view button */}
-                <CustomButton
-                id="btn_deck_view"
-                Type="button" 
-                Placeholder="" 
-                disabled={false}
-                onClick={deckClick} />
-                {/* Deck add / update  button */}
-                <CustomButton
-                id="btn_deck_add_update"
-                Type="button" 
-                Placeholder="" 
-                disabled={false}
-                onClick={deckClick} />
-                
                 {/* Logout button */}
                 <CustomButton
                 id="btn_userlogout"
@@ -78,21 +100,27 @@ const HomePage = () => {
                 onClick={userLogout} />
             </MenuBar>
             <MainContainer>
-                <CardGrid 
-                    id="StorageView"
-                    cards={
-                        storageData
-                    }
-                    display="block"
-                    ></CardGrid>
-                    <CardGrid 
-                        id="StorageAddDel"
-                        cards={
-                            storageData
-                        }
-                        display="none"
+                    <div id="StorageView" style={{display:storageDataDisplay}}>
+                        < TitleDiv>
+                            <h1>Your colection</h1>
+                        </TitleDiv>
+                        <CardGrid 
+                            cards={
+                                storageData
+                            }
                         ></CardGrid>
-                                
+                    </div>
+                    <div id="StorageAddDel" style={{display:storageAddDelDisplay}}>
+                        <SearchBar 
+                            onChange={handleChange}
+                            onClick={handleSubmit}
+                        />
+                        <CardEdit 
+                            cards={
+                                cardData
+                            }
+                        ></CardEdit>
+                    </div>
             </MainContainer>
         </ Container>
     );

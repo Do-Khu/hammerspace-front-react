@@ -12,7 +12,7 @@ export default class CardServices{
 
     async queryCard (cardName: string) {
         // this dude send me a array
-        const {data} = await this.axios.get("/api/cards/search"+cardName);
+        const {data} = await this.axios.get("/api/cards/search/"+cardName);
         if (data) {
             return data;
         } else {

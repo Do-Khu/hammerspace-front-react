@@ -9,7 +9,7 @@ export const MenuBar = styled.div`
 
     display: flex;
     flex-direction:column;
-    justify-content: space-between;
+    justify-content: initial;
     align-items: center;
     padding-top:30px;
     padding-left:15px;
@@ -90,9 +90,11 @@ export const MenuBar = styled.div`
     #btn_userlogout {
 
         display:flex;
-        justify-self:center;
+        justify-self:end;
         aling-items:center;
 
+        margin-top:330px;
+        margin-left:20px;
         width: 3vw;
         height: 3vh;
 
@@ -116,7 +118,31 @@ export const MainContainer = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+
+
+    #StorageView {
+        display: flex;
+        flex-direction:column ;
+        justify-content: center;
+        align-items: center;
+
+        width:100%;
+        height:100%;
+    }
+
+    #StorageAddDel {
+        display: flex;
+        flex-direction:column ;
+        justify-content: center;
+        align-items: center;
+        
+
+        color:#000;
+
+        width:100%;
+        height:100%;
+    }
 `;
 
 export const Container = styled.div`
@@ -124,8 +150,18 @@ export const Container = styled.div`
     width:100vw;
     height:100vh;
 
+    overflow-x:hidden;
     display: flex;
     flex-direction:row;
+`;
+
+export const TitleDiv = styled.div`
+    color: #000;
+    width: 100%;
+    height: 200px;
+
+    display:flex;
     justify-content: center;
     align-items: center;
+
 `;

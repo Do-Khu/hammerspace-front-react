@@ -34,7 +34,8 @@ export default class UserService {
    }
 
    async register (qData: any){
-       const {data} = await this.axios.post('/register', qData, this.Headers);
+        console.log(qData);
+       const {data} = await this.axios.post('/api/register', qData, this.Headers);
        //TODO: VERIFICAR O 200
    };
 
