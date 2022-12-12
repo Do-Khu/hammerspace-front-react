@@ -5,3 +5,6 @@
 - NOME: Fabio Tott Mormillo RA: 19.00176-2 
 - NOME: Gabriel Marques Rangel da Silva RA: 19.01288-8 
 - NOME: Julia Fernandes Santana RA: 19.01599-2
+
+## Link do Video
+https://youtu.be/8M3-l_vnROs
